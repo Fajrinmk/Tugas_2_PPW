@@ -1,0 +1,56 @@
+{% extends "lab_10/layout/base.html" %}
+
+{% block content %}
+<style type="text/css">
+.glyphicon-user{
+	font-size: 150px;
+}
+.buttonPertama{
+	margin-bottom: 20px;
+}
+.myData{
+	
+	padding: 10px;
+}
+.page1{
+	margin-bottom: 30px;
+}
+</style>
+<div class="container page1">
+	<div class="col-md-8">	<h1>Selamat datang {{ author }}</h1></div>
+	
+	<div class="col-md-4">
+		<a href="{% url 'update-status:auth_logout' %}" class="btn btn-danger btn-lg" onclick="return confirm('Keluar?')">Logout </a>
+	</div>
+	<div></div>
+</div>
+
+<div class="container">
+	<div class="col-md-4">
+			<div class="myData">
+		<span class="glyphicon glyphicon-user pull-left"></span>
+		<div class="myData2 pull-right">
+		<a href="#" class="btn btn-default buttonPertama btn-lg">Lihat Forum</a><br>
+		<a href="#" class="btn btn-info buttonPertama btn-lg">Edit Profile</a>
+		</div>
+	</div>
+
+	
+	<div class="col-md-8">
+		<p>Jumlah Status</p>
+		<p>Isi dengan last post ya ce !</p>
+	</div>
+</div>
+
+<div class="container">
+	<div class="col-md-8">
+		<div class="form-group">
+  <label for="comment">Comment:</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+  <a href="#" class="btn btn-primary">Submit</a>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
