@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-import Update_status.urls as update_status
+import update_status.urls as update_status
 from django.views.generic import RedirectView
 
 urlpatterns = [
