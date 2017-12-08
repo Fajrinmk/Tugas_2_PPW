@@ -1,9 +1,14 @@
 {% extends "lab_10/layout/base.html" %}
 
 {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
 <style type="text/css">
-.glyphicon-user{
+.font1{
+    font-family: 'Spectral SC', serif;
+}
+.part2-info_user .glyphicon-user{
 	font-size: 150px;
+    color: red
 }
 .buttonPertama{
 	margin-bottom: 20px;
@@ -12,45 +17,90 @@
 	
 	padding: 10px;
 }
-.page1{
+.part2 a{
 	margin-bottom: 30px;
+	margin-left: 30px;
+}
+.part2_info_user{
+	background-color: #C8D8DE;
+	padding: 10px;
+	border-radius: 10px;
+}
+.media-left .glyphicon-user{
+font-size: 50px;
+margin-right: 30px;
+}
+.kotak{
+background-color: #e6e6e6;
+border-radius: 10px;
+margin-bottom: 20px;
+}
+.page1{
+    top: -120px;
+}
+.row .btn-danger{
+    margin-top: 40px;
 }
 </style>
 <div class="container page1">
-	<div class="col-md-8">	<h1>Selamat datang {{ author }}</h1></div>
+	<div class="col-md-8 font1"><h1>Selamat datang {{ author }}</h1></div>
 	
 	<div class="col-md-4">
 		<a href="{% url 'update-status:auth_logout' %}" class="btn btn-danger btn-lg" onclick="return confirm('Keluar?')">Logout </a>
 	</div>
-	<div></div>
 </div>
-
-<div class="container">
+<div class="container part2">
+	<div class="col-md-4 part2_info_user">
+		<span class="glyphicon glyphicon-user pull-left" style="font-size:150px;"></span>
+		<a href="#" class="btn btn-lg btn-info ">Lihat Forum</a>
+		<a href="#" class="btn btn-lg btn-default">Update Status</a>
+	</div>
 	<div class="col-md-4">
-			<div class="myData">
-		<span class="glyphicon glyphicon-user pull-left"></span>
-		<div class="myData2 pull-right">
-		<a href="#" class="btn btn-default buttonPertama btn-lg">Lihat Forum</a><br>
-		<a href="#" class="btn btn-info buttonPertama btn-lg">Edit Profile</a>
-		</div>
+		<h2 class="font1">Jumlah Status : {{jumlah_status}}</h2>
+		<h2 class="font1">Last Comment : {{ latestMessage }}</h2>
 	</div>
-
-	
-	<div class="col-md-8">
-		<p>Jumlah Status</p>
-		<p>Isi dengan last post ya ce !</p>
-	</div>
+	<div class="col-md-4"></div>
 </div>
 
-<div class="container">
-	<div class="col-md-8">
-		<div class="form-group">
-  <label for="comment">Comment:</label>
-  <textarea class="form-control" rows="5" id="comment"></textarea>
-  <a href="#" class="btn btn-primary">Submit</a>
-		</div>
-	</div>
+<div class="container part3">
+<form id="form" method="POST" action="{% url 'update-status:add_status' %}">
+                    <h2><strong>Input Status..</strong></h2>
+                    {% csrf_token %}
+                    {{ Status_form }}
+                    <br><input id="submit" type="submit" class="btn btn-md btn-info" value="Submit">
+                    <br><br>
+                </form>
 </div>
-
-
+<!-- show status -->
+<section name="my-list" id="my-list" style="padding-bottom: 20px">
+    {% if status %}
+    <div class="container"> 
+        {% for data in status %}
+            <div class="kotak" style="padding-top: 15px">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="media" style="padding: 40px">
+                            <div class="media-left ">
+                                <!-- <img src="https://assets.teenvogue.com/photos/59922529fc885e5cc9aba96e/master/pass/GettyImages-546939180.jpg" class="media-object img-circle" style="width:60px"> --><!--foto nanti diganti dgn foto di hal profile-->
+                                <span class="glyphicon glyphicon-user pull-left"></span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading"><strong>{{profile_name}}</strong> <small><i>Posted on {{data.created_date}}</i></small></h4><!--nama nanti diganti dgn nama di hal profile-->
+                                <p>{{data.status}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tombol delete -->
+                    <div class="col-md-4">
+                        <a href="{% url 'update-status:delete' data.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-danger text-center">
+            <strong>Oops!</strong> Belum ada status.
+        </div>
+    {% endif %}
 {% endblock %}
+

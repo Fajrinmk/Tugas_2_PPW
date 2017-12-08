@@ -2,12 +2,14 @@
 from __future__ import unicode_literals
 
 import json
-
+from .forms import Status_Form
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
-from .models import Pengguna, myStatus, myComment
+import pytz
+from datetime import *
+from .models import Pengguna, Status, Comment
 
 response = {}
 def index(request):
@@ -32,9 +34,40 @@ def dashboard(request):
 			pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
 		except Exception as e:
 			pengguna = create_new_user(request)
-
+		response['Status_form'] = Status_Form
+		kode_identitas = get_data_user(request,'kode_identitas')
+		pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
+		response['status'] = pengguna.status_set.all().order_by('created_date')
+		stat = Status.objects.all().order_by('-id')
+		if (len(stat) > 0):
+			message = stat[0]
+			newMessage = message.status
+			time = message.created_date
+		else:
+			newMessage = "You have not posted yet" 
+			time = date(datetime.now().year,datetime.now().month,datetime.now().day)
+		response['latestMessage'] = newMessage
+		response['jumlah_status'] = pengguna.status_set.count()
 		html = 'update_status/dashboard.html'
 		return render(request, html, response)
+
+def add_status(request):
+	kode_identitas = get_data_user(request,'kode_identitas')
+	pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
+	form = Status_Form(request.POST or None)
+	if(request.method == 'POST' and form.is_valid()):
+		response['status'] = request.POST['status']
+		status = Status(status=response['status'], pengguna=pengguna)
+		status.save()
+	return HttpResponseRedirect(reverse('update-status:dashboard'))
+
+def delete_status(request, id):
+	kode_identitas = get_data_user(request,'kode_identitas')
+	pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
+	status = pengguna.status_set.filter(pk=id)
+	status.delete()
+	return HttpResponseRedirect(reverse('update-status:dashboard'))
+
 
 def get_data_user(request, tipe):
     data = None

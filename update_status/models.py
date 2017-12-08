@@ -1,20 +1,22 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils import timezone
+import pytz
 
 # Create your models here.
 class Pengguna(models.Model):
     kode_identitas = models.CharField('Kode Identitas', max_length=20, primary_key=True, )
     nama = models.CharField('Nama', max_length=200)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(default=timezone.now() + timezone.timedelta(hours=7))
+    updated_at = models.DateTimeField(default=timezone.now() + timezone.timedelta(hours=7))
 
-class myStatus(models.Model):
+class Status(models.Model):
     pengguna = models.ForeignKey(Pengguna)
     status = models.CharField(max_length=1000)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_date = models.DateTimeField(default=timezone.now() + timezone.timedelta(hours=7))
 
-class myComment(models.Model):
-	pengguna = models.ForeignKey(myStatus)
+class Comment(models.Model):
+	pengguna = models.ForeignKey(Status,on_delete=models.CASCADE)
 	comment = models.CharField(max_length=1000)
-	updated_at = models.DateTimeField(auto_now=True)
+	created_date = models.DateTimeField(default=timezone.now() + timezone.timedelta(hours=7))

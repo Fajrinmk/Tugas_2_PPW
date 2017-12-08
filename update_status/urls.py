@@ -11,4 +11,6 @@ urlpatterns = [
     # index dan dashboard
     url(r'^$', index, name='index'),
     url(r'^dashboard/$', dashboard, name='dashboard'),
+    url(r'^add_status/', add_status, name='add_status'),
+    url(r'^delete/(?P<id>\d+)/', delete_status, name='delete'),
 ]
