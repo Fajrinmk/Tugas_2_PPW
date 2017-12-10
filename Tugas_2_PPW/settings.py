@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'update_status',
-    'halaman_profile'.
+    'halaman_profile',
 ]
 
 MIDDLEWARE = [
