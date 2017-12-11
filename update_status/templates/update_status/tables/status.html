@@ -1,0 +1,31 @@
+<!-- show status -->
+<section name="my-list" id="my-list" style="padding-bottom: 20px">
+    {% if status %}
+    <div class="container"> 
+        {% for data in status %}
+            <div class="kotak" style="padding-top: 15px">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="media" style="padding: 40px">
+                            <div class="media-left ">
+                                <!-- <img src="https://assets.teenvogue.com/photos/59922529fc885e5cc9aba96e/master/pass/GettyImages-546939180.jpg" class="media-object img-circle" style="width:60px"> --><!--foto nanti diganti dgn foto di hal profile-->
+                                <span class="glyphicon glyphicon-user pull-left"></span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading"><strong>{{profile_name}}</strong> <small><i>Posted on {{data.created_date}}</i></small></h4><!--nama nanti diganti dgn nama di hal profile-->
+                                <p>{{data.status}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tombol delete -->
+                    <div class="col-md-4">
+                        <a href="{% url 'update-status:delete' data.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-danger text-center">
+            <strong>Oops!</strong> Belum ada status.
+        </div>
+    {% endif %}
