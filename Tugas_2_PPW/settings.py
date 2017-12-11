@@ -38,12 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'update_status',
+    'halaman_riwayat',
     'halaman_profile',
-<<<<<<< HEAD
-    'halaman_riwayat'
-=======
     'cari_mahasiswa',
->>>>>>> 880a779731978abaf7277a9c3afb7a334aebb2a4
 ]
 
 MIDDLEWARE = [
