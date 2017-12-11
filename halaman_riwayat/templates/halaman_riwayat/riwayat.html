@@ -15,13 +15,14 @@
     }
 
     tr:nth-child(even){
-        background-color :rgb(65, 173, 173);
+        background-color :linen;
     }
 
     th{
-        background-color: linen;
-        color : white;
+        background-color: turquoise;
+        color :black;
     }
+    
 
 </style>
 
@@ -31,9 +32,8 @@
         <th> Nilai </th>
     </tr>
     <tr>
-        {% for npm in database_mahasiswa %}
-        <td> </td>
-        <td> </td>
+        <td id="matkul"> </td>
+        <td id="nilai"> </td>
     </tr>
 
 </table>
@@ -46,13 +46,19 @@
     $(document).ready(function(){
         $.ajax({
             method: "GET",
-            url : '{% url "https://private-e52a5-ppw2017.apiary-mock.com/riwayat"%}',
+            url : "https://private-e52a5-ppw2017.apiary-mock.com/riwayat",
             success : function(database_mahasiswa){
                 console.log(database_mahasiswa['nilai'])
-                    var nilai_mhs = database_mahasiswa[0]['nilai']
+                $.each(database_mahasiswa, function(item) {
+                    var matkul = item['kelas'][3][2];
+                    var nilai = item['nilai'];
+                    $("#matkul").append(matkul)
+                    $("#nilai").append(nilai)
+                });
+                    
 
             }
         })
-    }
+    })
 </script>
 {% endblock %}
