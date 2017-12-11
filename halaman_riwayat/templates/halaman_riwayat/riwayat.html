@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% block content %}
+
+<head></head>
+<section>
+<style>
+    table{
+        border-collapse: collapse;
+        width : 100%;
+    }
+
+    th,td{
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){
+        background-color :linen;
+    }
+
+    th{
+        background-color: turquoise;
+        color :black;
+    }
+    
+
+</style>
+
+<table>
+    <tr>
+        <th> Nama Mata Kuliah</th>
+        <th> Nilai </th>
+    </tr>
+    <tr>
+        <td id="matkul"> </td>
+        <td id="nilai"> </td>
+    </tr>
+
+</table>
+</section>
+
+{% endblock %}
+{% block javascript %}
+
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            method: "GET",
+            url : "https://private-e52a5-ppw2017.apiary-mock.com/riwayat",
+            success : function(database_mahasiswa){
+                console.log(database_mahasiswa['nilai'])
+                $.each(database_mahasiswa, function(item) {
+                    var matkul = item['kelas'][3][2];
+                    var nilai = item['nilai'];
+                    $("#matkul").append(matkul)
+                    $("#nilai").append(nilai)
+                });
+                    
+
+            }
+        })
+    })
+</script>
+{% endblock %}
