@@ -1,7 +1,6 @@
 <!DOCTYPE html>
+{% extends "update_status/layout/base.html" %}
 {% block content %}
-
-<head></head>
 <section>
 <style>
     table{
@@ -19,8 +18,8 @@
     }
 
     th{
-        background-color: turquoise;
-        color :black;
+        background-color: black;
+        color : white;
     }
     
 
@@ -32,15 +31,20 @@
         <th> Nilai </th>
     </tr>
     <tr>
-        <td id="matkul"> </td>
-        <td id="nilai"> </td>
+    {% for riwayat in daftar_riwayat %}
+        <tr>
+            <td>{{ riwayat.kelas.nm_mk_cl.nm_mk }}</td>
+            <td>{{ riwayat.nilai }}</td>
+        </tr>
+    {% endfor %}
+
     </tr>
 
 </table>
 </section>
 
 {% endblock %}
-{% block javascript %}
+<!-- {% block javascript %}
 
 <script>
     $(document).ready(function(){
@@ -61,4 +65,4 @@
         })
     })
 </script>
-{% endblock %}
+{% endblock %} -->
