@@ -44,9 +44,10 @@ def dashboard(request):
 		response['Status_form'] = Status_Form
 		kode_identitas = get_data_user(request,'kode_identitas')
 		pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
-		response['status'] = pengguna.status_set.all()
+		response['status'] = pengguna.status_set.all().order_by('-id')
 		# print(response['status'])
-		stat = Status.objects.all().order_by('-id')
+		# stat = Status.objects.all().order_by('-id')
+		stat = pengguna.status_set.all().order_by('-id')
 		if (len(stat) > 0):
 			message = stat[0]
 			newMessage = message.status
@@ -54,9 +55,14 @@ def dashboard(request):
 		else:
 			newMessage = "You have not posted yet" 
 			time = date(datetime.now().year,datetime.now().month,datetime.now().day)
-		response['latestMessage'] = newMessage
-		response['jumlah_status'] = pengguna.status_set.count()
-		response['daftar_riwayat'] = views.get_daftar_riwayat()
+		# response['latestMessage'] = newMessage
+		# response['jumlah_status'] = pengguna.status_set.count()
+		# response['daftar_riwayat'] = views.get_daftar_riwayat()
+		# response['firstName'] = request.session['firstName']
+		# response['lastName'] = request.session['lastName']
+		# response['imageUrl'] = request.session['imageUrl']
+		# response['email'] = request.session['email']
+		# response['profileUrl'] = request.session['profileUrl']
 		html = 'update_status/dashboard.html'
 		return render(request, html, response)
 
@@ -99,9 +105,9 @@ def create_new_user(request):
     return pengguna
 
 ### SESSION : GET and SET
-def get_data_session(request):
-    if get_data_user(request, 'user_login'):
-        response['author'] = get_data_user(request, 'user_login')
+# def get_data_session(request):
+#     if get_data_user(request, 'user_login'):
+#         response['author'] = get_data_user(request, 'user_login')
 
 def set_data_for_session(request):
     response['author'] = get_data_user(request, 'user_login')
