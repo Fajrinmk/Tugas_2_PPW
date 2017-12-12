@@ -56,12 +56,13 @@
       var data = sessionStorage.getItem("data");
       var obj = JSON.parse(data);
       insertDatabase(obj.firstName,obj.lastName,obj.pictureUrl,obj.emailAddress,obj.publicProfileUrl);
+      alert('Data sudah disimpan')
     }
 
     var insertDatabase = function(firstName,lastName,imageUrl,email,profileUrl) {
         $.ajax({
             method: "POST",
-            url: 'http://localhost:8000/page_profile/save_to_database/',
+            url: 'https://localhost:8000/page_profile/save_to_database/',
             data: {
               firstName: firstName,
               lastName: lastName,
