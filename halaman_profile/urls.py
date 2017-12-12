@@ -7,6 +7,6 @@ urlpatterns = [
     # url(r'^movie/detail/(?P<id>.*)/$', movie_detail, name='movie_detail'),
 
     # index dan dashboard
-    # url(r'^page_profile/$', page_profile, name='page_profile'),
+    url(r'^page_profile/$', page_profile, name='page_profile'),
     url(r'^$', index, name='index'),
 ]
