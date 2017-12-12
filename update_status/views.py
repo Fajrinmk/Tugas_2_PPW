@@ -10,6 +10,7 @@ from django.urls import reverse
 import pytz
 from datetime import *
 from .models import Pengguna, Status, Comment
+from halaman_riwayat import views 
 
 response = {}
 def index(request):
@@ -48,6 +49,7 @@ def dashboard(request):
 			time = date(datetime.now().year,datetime.now().month,datetime.now().day)
 		response['latestMessage'] = newMessage
 		response['jumlah_status'] = pengguna.status_set.count()
+		response['daftar_riwayat'] = views.get_daftar_riwayat()
 		html = 'update_status/dashboard.html'
 		return render(request, html, response)
 
