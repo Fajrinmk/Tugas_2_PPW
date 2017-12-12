@@ -2,6 +2,8 @@
 
 {% block content %}
 <link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
+<style type="text/css" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></style>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
 .font1{
     font-family: 'Spectral SC', serif;
@@ -99,10 +101,9 @@ margin-bottom: 20px;
     </div>
     <div id="menu3" class="tab-pane fade">
       <h3>Mahasiswa</h3>
-      <p>Kuy</p>
+      {% include 'cari_mahasiswa/tables/mahasiswa.html' %}
     </div>
   </div>
 </div>
     
 {% endblock %}
-
