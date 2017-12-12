@@ -15,7 +15,7 @@ def index(request):
     # print ("#==> masuk index")
     if 'user_login' in request.session:
         response['login'] = True
-        return HttpResponseRedirect(reverse('page_status:index'))
+        return HttpResponseRedirect(reverse('update-status:index'))
     else:
         response['login'] = False
         response['author'] = get_data_user(request, 'user_login')
