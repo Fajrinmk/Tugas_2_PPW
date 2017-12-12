@@ -1,0 +1,51 @@
+{% extends "my_profile/layout/base.html" %}
+
+{% block content %}
+<!-- <script type="text/javascript" src="//platform.linkedin.com/in.js">
+	api_key:   '81bzcu663ro78t'
+	onLoad:    onLinkedInLoad
+	authorize: true
+</script> -->
+<!-- <script type="text/javascript" src="//platform.linkedin.com/in.js">
+    api_key:   '81bzcu663ro78t'
+    onLoad:    [ONLOAD]
+    authorize: [AUTHORIZE]
+    lang:      [LANG_LOCALE]
+</script> -->
+
+
+
+
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
+  api_key: '81bzcu663ro78t'
+  onLoad: onLinkedInLoad
+  authorize: true
+</script>
+
+<div class="change-this">
+  <h1>HAHAHAHAH</h1>
+</div>
+
+<button onclick="liLogin()" class="button btn btn-default"> TES</button>
+<script type="text/javascript">
+	
+    var liLogin = function() { // Setup an event listener to make an API call once auth is complete
+        IN.UI.Authorize().params({"scope":["r_basicprofile", "r_emailaddress"]}).place();
+        IN.Event.on(IN, 'auth', getProfileData);
+    }
+
+    var getProfileData = function() { // Use the API call wrapper to request the member's basic profile data
+        IN.API.Profile("me").fields("id,firstName,lastName,email-address,picture-urls::(original),public-profile-url,location:(name)").result(function (me) {
+            var profile = me.values[0];
+            var id = profile.id;
+            var firstName = profile.firstName;
+            var lastName = profile.lastName;
+            var emailAddress = profile.emailAddress;
+            var pictureUrl = profile.pictureUrls.values[0];
+            var profileUrl = profile.publicProfileUrl;
+            var country = profile.location.name;
+        });
+    }
+</script>
+{% endblock %}
+

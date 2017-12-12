@@ -52,13 +52,13 @@ margin-bottom: 20px;
     margin-top: 40px;
 }
 #menu3{
-  position: absolute;
-  margin-top: -700px;
+  position: relative;
+  margin-top: -400px;
 }
 
 #menu2{
-  position: absolute;
-  margin-top: -350px
+  position: relative;
+  margin-top: -300px;
 }
 </style>
 <div class="container page1">
@@ -105,7 +105,7 @@ margin-bottom: 20px;
   </ul>
 
   <div class="tab-content">
-    <div id="home" class="tab-pane fade in active" onclick="hide_this()">
+    <div id="home" class="tab-pane fade in active">
       <div id="hide_this">
       <h3>Status</h3>
       {% include 'update_status/tables/status.html' %}  
@@ -117,6 +117,7 @@ margin-bottom: 20px;
     </div>
     <div id="menu2" class="tab-pane fade">
       <h3>Riwayat </h3>
+      <br>
       {% include 'halaman_riwayat/riwayat.html' %}
     </div>
     <div id="menu3" class="tab-pane fade">
