@@ -26,6 +26,10 @@ padding:0;
 margin:0;
 font-family: 'Lato', sans-serif !important;
 background:#f5c63b;
+font-family: Raleway;
+background: rgb(19, 37, 37);  /* fallback for old browsers */
+background: rgb(0, 0, 0);  /* Chrome 10-25, Safari 5.1-6 */
+background:rgb(0, 0, 0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 h1,h2,h3,h4,h5,h6{

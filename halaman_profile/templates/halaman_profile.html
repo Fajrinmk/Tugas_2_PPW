@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>LingIn</title>
+<!--   <title>LingIn</title>
   <link rel="icon" href="http://static1.squarespace.com/static/559c1968e4b0ee9660cb563f/t/55b28e4ce4b07dd5b8929b7d/1437765197224/faviconL-553d9019v1_site_icon.png?format=1000w" type="image/gif" sizes="16x16">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -14,11 +14,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Northwest">
-<!--   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">   -->
-  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">   -->
+<!--   <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Anton|Arvo" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Anton|Arvo" rel="stylesheet">
-  
+   -->
+<head>
+<title> Profile Page </title>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom_css.css' %}" />
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="//platform.linkedin.com/in.js">
     api_key:   819tsiaks22xw1
     onLoad:    onLinkedInLoad
@@ -26,6 +31,65 @@
     
 </script>
 </head>
+<div class = "round-base">
+  <br>
+  <body>
+    <h3 align = "center" style ="font-size:25pt"><strong> Profile </strong> </h3>
+    <p align="center">
+    <img class = "img-circle,centerImage" src ="https://assets.teenvogue.com/photos/59922529fc885e5cc9aba96e/master/pass/GettyImages-546939180.jpg" width="200" height="200" alt = "coba">
+    </p>
+  <h4 align = "center" style ="font-size:18pt" ><i> {{ Name }} </i></h4>
+  <p align = "center">
+  <button method="get" style ="" class="btn btn-default" onclick="location.href='{% url 'halaman_profile:show_form_edit_profile' %}'">Edit Profile</button>
+  </p>
+  <br>
+  <table align = "center"  width="500" cellspacing = "40" cellpadding="40">
+  <tr>
+    <td align = "left" style ="font-size:12pt">Birthday</td>
+    <td align = "left" style ="font-size:12pt">{{ Birthday }}</td>
+  </tr>
+  <tr>
+      <td><br></td>
+  </tr>
+  <tr>
+    <td align = "left" style ="font-size:12pt">Gender</td>
+    <td align = "left" style ="font-size:12pt">{{ Gender }}</td>
+  </tr>
+  <tr>
+      <td><br></td> 
+  </tr>
+  <tr>
+    <td align = "left" style ="font-size:12pt">Expertise</td>
+    <td align = "left" style ="font-size:12pt">
+      <ul>
+        {% for ii in Expertise %}
+          <li id = "li" align ="left" style ="font-size:12pt">{{ ii }}</li>
+        {% endfor %}
+      </ul>
+    </td>
+  </tr>
+  <tr>
+      <td><br></td>
+      
+  </tr>
+  <tr>
+    <td align = "left" style ="font-size:12pt">Description</td>
+    <td align = "left" style ="font-size:12pt">{{ Description }}</td>
+  </tr>
+  <tr>
+      <td><br></td> 
+  </tr>
+  <tr>
+    <td align = "left" style ="font-size:12pt">Email</td>
+    <td align = "left" style ="font-size:12pt">{{ Email }}</td>
+  </tr>
+  </table>
+</div>
+<br>
+<br>  
+</body>
+
+
 <style type="text/css">
 body{
   padding-top: 0px;

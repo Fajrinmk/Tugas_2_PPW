@@ -1,4 +1,76 @@
+{% load staticfiles %} 
+{% load static %} 
+
+{% block content %}
 <!DOCTYPE html>
+<form id="form" class = "form" method="POST" action="{% url 'halaman_profile:handle_edit_profile' %}">
+    <h2 style="color:White" align = "center">Edit Profile</h2>
+    {% csrf_token %}
+    <table align = "center"  width="600" cellspacing = "100" cellpadding="100">
+        <div class="form-group">
+            <td><label for="" class="control-label" style="color:White"> Nama </td></label>
+            <td><input type="text" name="profile_name" class="form-control" value="{{ profile.name }}"></td>
+        </div>
+    
+    <tr>
+    <div class="form-group">
+        <td><label for="" class="control-label" style="color:White"> Birthdate </td></label>
+        <td><input type="text" name="birthdate" class="form-control" value="{{ profile.birthday }}"></td>
+    </div>
+    </tr>
+
+    <tr>
+    <div class="form-group">
+        <td><label for="" class="control-label" style="color:White"> Gender </td></label>
+        <td><input type="text" name="gender" class="form-control" value="{{ profile.gender }}"></td>
+    </div>
+    </tr>
+
+    <tr>
+    <div class="form-group">
+        <td><label for="" class="control-label" style="color:White"> Expertise </td></label>
+        <td><input type="text" name="expert" class="form-control" value="{{ profile.expertise }}"> </td>
+    </div>
+    </tr>
+
+    <tr>
+    <div class="form-group">
+        <td><label for="" class="control-label" style="color:White"> Email </td></label>
+        <td><input type="text" name="email" class="form-control" value="{{ profile.email }}"> </td>
+    </div>
+    </tr>
+
+    <tr>
+    <div class="form-group">
+        <td><label for="" class="control-label" style="color:White"> Description </td></label>
+        <td><input type="text" name="desc_profile" class="form-control" value="{{ profile.description }}"> </td>
+    </div>
+    </tr>
+    <tr>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    </table>
+    <table align = "center"  width="600" cellspacing = "100" cellpadding="100">
+        <tr>
+        <td></td>
+        <td><input class="btn btn-default" align = "right" type="submit" value="Submit">
+        <button class="btn btn-default" style = "right" alohref="/halaman_profile/">Cancel</button></td>
+        </tr>
+    </table>
+
+</form>
+{% endblock %}
+
+<!-- gua gatau ini apaan anjeng -->
 <html>
 <head>
   <script type="text/javascript" src="//platform.linkedin.com/in.js">
