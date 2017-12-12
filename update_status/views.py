@@ -4,13 +4,14 @@ from __future__ import unicode_literals
 import json
 from .forms import Status_Form
 from django.contrib import messages
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 import pytz
 from datetime import *
 from .models import Pengguna, Status, Comment
 from halaman_riwayat import views 
+from django.core import serializers
 
 response = {}
 def index(request):
@@ -41,6 +42,7 @@ def dashboard(request):
 		kode_identitas = get_data_user(request,'kode_identitas')
 		pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
 		response['status'] = pengguna.status_set.all().order_by('created_date')
+		# print(response['status'])
 		stat = Status.objects.all().order_by('-id')
 		if (len(stat) > 0):
 			message = stat[0]
@@ -104,4 +106,9 @@ def set_data_for_session(request):
     response['role'] = request.session['role']
 
 # def add_data_to_session(request, id):
-	
+def status_list_json(request): # update
+	kode_identitas = get_data_user(request,'kode_identitas')
+	pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
+	if(request.method == 'GET'):
+		status = [obj.as_dict() for obj in pengguna.status_set.all()]
+		return JsonResponse({'status_code':200, "results": status}, content_type='application/json')
