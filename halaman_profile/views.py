@@ -65,10 +65,24 @@ def index(request):
     response['kode_identitas'] = request.session['kode_identitas']
     return render(request, html, response)
 
-def edit_profile(request):
+def edit_profile_page(request):
     html = 'page_profile/edit_profile.html'
     response['kode_identitas'] = request.session['kode_identitas']
     return render(request, html, response)
+
+def update_profile(request):
+    if request.method=="POST":
+        npm = request.POST['npm']
+        #cari yang unik sih
+        profile = DataProfile.objects.get(npm=npm)
+        profile.keahlian = request.POST ['keahlian']
+        profle.email = request.POST['email']
+
+
+    else:
+
+
+
 
 # def edit_profile(request):
 #     if 'user_login' in request.session:
