@@ -21,6 +21,6 @@ from django.views.generic import RedirectView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^update_status/', include(update_status,namespace='update-status')),
-    url(r'^page_profile/', include(update_status,namespace='page-profile')),
-    url(r'^$', RedirectView.as_view(url='update_status/',permanent=True),name='$'),
+    url(r'^page_profile/', include(page_profile,namespace='page-profile')),
+    url(r'^$', RedirectView.as_view(url='page_profile/',permanent=True),name='$'),
 ]
