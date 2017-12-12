@@ -24,8 +24,6 @@ def index(request):
 
 
 def dashboard(request):
-	print(request.session['kode_identitas'])
-	print(request.session['user_login'])
 	if 'user_login' not in request.session:
 		response['author'] = get_data_user(request, "user_login")
 		html = 'update_status/login.html'
@@ -40,7 +38,7 @@ def dashboard(request):
 		response['Status_form'] = Status_Form
 		kode_identitas = get_data_user(request,'kode_identitas')
 		pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
-		response['status'] = pengguna.status_set.all().order_by('created_date')
+		response['status'] = pengguna.status_set.all()
 		# print(response['status'])
 		stat = Status.objects.all().order_by('-id')
 		if (len(stat) > 0):
