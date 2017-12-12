@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'update_status',
     'halaman_riwayat',
-    'halaman_profile',
+    'page_profile',
     'cari_mahasiswa',
 ]
 
