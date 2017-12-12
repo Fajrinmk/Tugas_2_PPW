@@ -20,10 +20,13 @@ def index(request):
 	else:
 
 		response['author'] = get_data_user(request, 'user_login')
+		users = User.objects.all()
+		response['users'] = users
 		npm = request.session['kode_identitas']
 		user = (User.objects.filter(kode_identitas=npm).values('firstName', 'lastName','imageUrl','email','profileUrl','kode_identitas'))
 		if(user):
 			response['user'] = user[0]
+			
 		html = 'page_status/page_status.html'
 		return render(request, html, response)
 		html = 'update_status/login.html'
