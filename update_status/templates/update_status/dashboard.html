@@ -91,7 +91,7 @@ margin-bottom: 20px;
   <p>Click tab below.</p>
 
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Status</a></li>
+    <li class="active"><a data-toggle="tab" href="#home" onclick="myFunction_reload()">Status</a></li>
     <li><a data-toggle="tab" href="#menu1" onclick="my_function()">Profile</a></li>
     <li><a data-toggle="tab" href="#menu2" onclick="my_function()">Riwayat</a></li>
     <li><a data-toggle="tab" href="#menu3" onclick="my_function()">Teman</a></li>
@@ -124,8 +124,12 @@ margin-bottom: 20px;
 
   function my_function(){
     console.log('my_function')
-      document.getElementById("hide_this").innerHTML="";
+      $("#hide_this").hide();
   }
+
+  function myFunction_reload() {
+    $("#hide_this").show();
+}
 
   $(document).ready(function(){
     console.log("JQuery nyala")
