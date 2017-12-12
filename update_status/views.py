@@ -24,8 +24,6 @@ def index(request):
 
 
 def dashboard(request):
-	print(request.session['kode_identitas'])
-	print(request.session['user_login'])
 	if 'user_login' not in request.session:
 		response['author'] = get_data_user(request, "user_login")
 		html = 'update_status/login.html'

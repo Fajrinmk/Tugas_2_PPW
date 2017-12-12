@@ -31,8 +31,8 @@ def auth_login(request):
 
 def auth_logout(request):
     print ("#==> auth logout")
-    del request.session['user_login']
-    # request.session.flush() # menghapus semua session
+    # del request.session['user_login']
+    request.session.flush() # menghapus semua session
 
     messages.info(request, "Anda berhasil logout. Semua session Anda sudah dihapus")
     return HttpResponseRedirect(reverse('update-status:index'))
