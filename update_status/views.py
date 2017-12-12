@@ -104,11 +104,3 @@ def set_data_for_session(request):
     response['author'] = get_data_user(request, 'user_login')
     response['kode_identitas'] = request.session['kode_identitas']
     response['role'] = request.session['role']
-
-# def add_data_to_session(request, id):
-def status_list_json(request): # update
-	kode_identitas = get_data_user(request,'kode_identitas')
-	pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
-	if(request.method == 'GET'):
-		status = [obj.as_dict() for obj in pengguna.status_set.all()]
-		return JsonResponse({'status_code':200, "results": status}, content_type='application/json')
