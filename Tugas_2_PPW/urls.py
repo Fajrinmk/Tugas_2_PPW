@@ -16,12 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 import update_status.urls as update_status
+import page_profile.urls as page_profile
 from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^update_status/', include(update_status,namespace='update-status')),
+
+    url(r'^page_profile/', include(page_profile,namespace='page-profile')),
+    url(r'^$', RedirectView.as_view(url='page_profile/',permanent=True),name='$'),
+
     url(r'^halaman_riwayat/', include(update_status,namespace='halaman-riwayat')),
     url(r'^halaman_profile/', include(update_status,namespace='halaman-profile')),
     url(r'^$', RedirectView.as_view(url='update_status/',permanent=True),name='$'),
+
 ]
