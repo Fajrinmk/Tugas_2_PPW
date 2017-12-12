@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^dashboard/$', dashboard, name='dashboard'),
     url(r'^add_status/', add_status, name='add_status'),
     url(r'^delete/(?P<id>\d+)/', delete_status, name='delete'),
+    url(r'^get-status-list/$', status_list_json, name='get-status-list')
 ]

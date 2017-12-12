@@ -1,0 +1,46 @@
+<div id="status">
+    
+
+</div>
+    <script>
+        $( document ).ready(function () {
+            $.ajax({
+                // kalo get kayaknya gk usah spesifik in data deh
+                method: "GET",
+                url: "{% url 'update-status:get-status-list' %}", // update
+                success: function (response) {
+                    console.log("hehehe");
+                    list_status = response.results;
+                    for(var i=0; i<list_status.length; i++){
+                        status = list_status[i];
+                        // console.log(JSON.parse(status))
+                        // membuat html
+
+                        html = '<div class="kotak" style="padding-top: 15px">'+
+                '<div class="row"><div class="col-sm-8"><div class="media" style="padding: 40px"><div class="media-left ">'+
+                '<span class="glyphicon glyphicon-user pull-left"></span></div><div class="media-body">'+
+                '<h4 class="media-heading"><strong>'+'{{profile_name}}'+ '</strong> <small><i>Posted on '+ 
+                status.created_date+'</i></small></h4>'+
+                                '<p>'+ status.status +'</p></div></div></div>'+
+                                '<div class="col-md-4"><a href="#" class="btn btn-danger">Delete</a></div>';
+
+                    $('#status').append(html);
+                    console.log("MASUK");
+                    }
+                    // gunakan fungsi append
+                },
+                error: function(error){
+                    // ambil dari lab_7.html
+                html = '<div class="alert alert-danger text-center">\
+                            <strong>Opps!</strong> Tidak ada Status\
+                        </div>';
+                $('#status').append(html);
+                }
+            });
+        });
+        // const deleteFunc = function(id){ //javascrpt biasa
+        //     friend_id = id;
+        //     window.open('delete-friend/'+friend_id+'/', '_self');
+        // };
+
+    </script>
