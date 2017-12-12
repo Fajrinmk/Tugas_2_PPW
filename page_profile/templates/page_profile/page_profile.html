@@ -1,0 +1,22 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h2> {{user.firstName}}</h2>
+    </div>
+    <div class="panel-body">
+      <pre style="background: linear-gradient(to left, #ffe6e9, #0dad88); font-size: 15px;">
+        {% if user %}
+          <strong> Nama : {{user.firstName}} {{user.lastName}} </strong>
+          <strong> NPM  : {{kode_identitas}} </strong>
+          <strong> Keahlian : Kosong </strong>
+          <strong> Email : {{user.email}} </strong>
+          <strong> Profile LinkedIn : <a href="{{user.profileUrl}}"> {{user.profileUrl}} </a></strong>
+        {% else %}
+            <strong> Nama                  </strong>
+            <strong> NPM                   {{kode_identitas}} </strong>
+            <strong> Keahlian              </strong>
+            <strong> Email                 </strong>
+            <strong> Profile Linkedin      </strong>
+         {% endif %}
+      </pre>
+    </div>
+</div>
