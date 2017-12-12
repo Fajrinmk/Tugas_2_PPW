@@ -1,5 +1,4 @@
 from __future__ import unicode_literals
-
 import json
 from .forms import Status_Form
 from django.contrib import messages
@@ -11,17 +10,24 @@ from datetime import *
 from .models import Pengguna, Status, Comment
 from halaman_riwayat import views 
 from django.core import serializers
+from page_profile.views import index
+from page_profile.models import User
 
 response = {}
 def index(request):
-    # print ("#==> masuk index")
-    if 'user_login' in request.session:
-        return HttpResponseRedirect(reverse('update-status:dashboard'))
-    else:
-        response['author'] = get_data_user(request, 'user_login')
-        html = 'update_status/login.html'
-        return render(request, html, response)
+	if 'user_login' in request.session:
+		return HttpResponseRedirect(reverse('update-status:dashboard'))
+	else:
 
+		response['author'] = get_data_user(request, 'user_login')
+		npm = request.session['kode_identitas']
+		user = (User.objects.filter(kode_identitas=npm).values('firstName', 'lastName','imageUrl','email','profileUrl','kode_identitas'))
+		if(user):
+			response['user'] = user[0]
+		html = 'page_status/page_status.html'
+		return render(request, html, response)
+		html = 'update_status/login.html'
+		return render(request, html, response)
 
 def dashboard(request):
 	if 'user_login' not in request.session:
