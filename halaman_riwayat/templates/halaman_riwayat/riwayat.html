@@ -1,8 +1,15 @@
 <section>
 <style>
-    table{
-        border-collapse: collapse;
+    div.scroll {
+        width: 1100px;
+        height: 300px;
+        overflow: scroll;
+    }
+    table,tbody{
+        align : center;
         width : 100%;
+        border: 1px solid black;
+        border-collapse: collapse;
     }
 
     th,td{
@@ -10,8 +17,9 @@
         padding: 8px;
     }
 
-    tr:nth-child(even){
+    td:nth-child(even){
         background-color :rgb(219, 252, 255);
+        border: 1px solid black;
     }
 
     th{
@@ -21,24 +29,27 @@
     
 
 </style>
-
+<div class=scroll>
 <table>
+    <thead>
     <tr>
         <th> Nama Mata Kuliah</th>
         <th> Nilai </th>
     </tr>
+    </thead>
+    <tbody>
     {% for riwayat in daftar_riwayat %}    
     <tr>
-        <tr>
-            <td>{{ riwayat.kelas.nm_mk_cl.nm_mk }}</td>
-            <td>{{ riwayat.nilai }}</td>
-        </tr>
+        <td>{{ riwayat.kelas.nm_mk_cl.nm_mk }}</td>
+        <td>{{ riwayat.nilai }}</td>
     </tr>
+    </tbody>
     {% endfor %}
         <!-- <td id="matkul"> </td> 
         <td id="nilai" ></td> -->
     
 </table>
+</div>
 </section>
 
 <!-- {% block javascript %}
