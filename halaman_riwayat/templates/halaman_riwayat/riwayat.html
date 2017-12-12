@@ -37,14 +37,19 @@
         <th> Nilai </th>
     </tr>
     </thead>
-    <tbody>
-    {% for riwayat in daftar_riwayat %}    
+    {% for riwayat in daftar_riwayat %}
+    <tbody>   
     <tr>
         <td>{{ riwayat.kelas.nm_mk_cl.nm_mk }}</td>
+        {%if rahasia %}
+        <td>Dirahasiakan</td>
+        {% else %}
         <td>{{ riwayat.nilai }}</td>
+        {% endif %}
     </tr>
     </tbody>
     {% endfor %}
+
         <!-- <td id="matkul"> </td> 
         <td id="nilai" ></td> -->
     
