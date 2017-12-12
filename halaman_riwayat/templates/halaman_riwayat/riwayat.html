@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-{% block content %}
 <section>
 <style>
     table{
@@ -13,7 +11,7 @@
     }
 
     tr:nth-child(even){
-        background-color :linen;
+        background-color :rgb(219, 252, 255);
     }
 
     th{
@@ -29,20 +27,20 @@
         <th> Nama Mata Kuliah</th>
         <th> Nilai </th>
     </tr>
+    {% for riwayat in daftar_riwayat %}    
     <tr>
-    {% for riwayat in daftar_riwayat %}
         <tr>
             <td>{{ riwayat.kelas.nm_mk_cl.nm_mk }}</td>
             <td>{{ riwayat.nilai }}</td>
         </tr>
-    {% endfor %}
-
     </tr>
-
+    {% endfor %}
+        <!-- <td id="matkul"> </td> 
+        <td id="nilai" ></td> -->
+    
 </table>
 </section>
 
-{% endblock %}
 <!-- {% block javascript %}
 
 <script>
@@ -51,14 +49,18 @@
             method: "GET",
             url : "https://private-e52a5-ppw2017.apiary-mock.com/riwayat",
             success : function(database_mahasiswa){
-                console.log(database_mahasiswa['nilai'])
-                $.each(database_mahasiswa, function(item) {
-                    var matkul = item['kelas'][3][2];
-                    var nilai = item['nilai'];
-                    $("#matkul").append(matkul)
-                    $("#nilai").append(nilai)
-                });
-                    
+                var hayo = JSON.stringify(database_mahasiswa);
+                console.log("loggg " + JSON.stringify(database_mahasiswa))
+                // TO DO : bikin keadaan kalo pilih hide sama enggak
+                // $.each(hayo, function(item) {
+                //     // var matkul = database_mahasiswa['kelas']['nm_mk_cl']['nm_mk'];
+                //     // console.log(matkul)
+                //     var nilai = hayo['nilai'];
+                //     console.log("haha " + nilai)
+                //     // $("#matkul").append(matkul)
+                //     $("#nilai").append(nilai)
+                // });
+                console.log(JSON.stringify(database_mahasiswa[0]['nilai']));    
 
             }
         })

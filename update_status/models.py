@@ -16,6 +16,12 @@ class Status(models.Model):
     status = models.CharField(max_length=1000)
     created_date = models.DateTimeField(default=timezone.now() + timezone.timedelta(hours=7))
 
+    # def as_dict(self):
+    #     return {
+    #     'status' : self.status
+    #     'created_date' : self.created_date
+    #     }
+
 class Comment(models.Model):
 	pengguna = models.ForeignKey(Status,on_delete=models.CASCADE)
 	comment = models.CharField(max_length=1000)

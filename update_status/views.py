@@ -10,6 +10,7 @@ from django.urls import reverse
 import pytz
 from datetime import *
 from .models import Pengguna, Status, Comment
+from halaman_riwayat import views 
 
 response = {}
 def index(request):
@@ -23,6 +24,8 @@ def index(request):
 
 
 def dashboard(request):
+	print(request.session['kode_identitas'])
+	print(request.session['user_login'])
 	if 'user_login' not in request.session:
 		response['author'] = get_data_user(request, "user_login")
 		html = 'update_status/login.html'
@@ -48,6 +51,7 @@ def dashboard(request):
 			time = date(datetime.now().year,datetime.now().month,datetime.now().day)
 		response['latestMessage'] = newMessage
 		response['jumlah_status'] = pengguna.status_set.count()
+		response['daftar_riwayat'] = views.get_daftar_riwayat()
 		html = 'update_status/dashboard.html'
 		return render(request, html, response)
 
@@ -98,3 +102,6 @@ def set_data_for_session(request):
     response['author'] = get_data_user(request, 'user_login')
     response['kode_identitas'] = request.session['kode_identitas']
     response['role'] = request.session['role']
+
+# def add_data_to_session(request, id):
+	

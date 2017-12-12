@@ -83,8 +83,19 @@ def show_form_edit_profile(request):
 
 
     # else:
+def index(request):
+    response['author'] = "abscehfhwig"
+    html = 'page_profile/page_profile.html'
+    if 'kode_identitas' in request.session:
+    	response['kode_identitas'] = request.session['kode_identitas']
+    else :
+    	response['kode_identitas'] = None
+    return render(request, html, response)
 
-
+def edit_profile(request):
+    html = 'page_profile/edit_profile.html'
+    response['kode_identitas'] = request.session['kode_identitas']
+    return render(request, html, response)
 
 
 # def edit_profile(request):
