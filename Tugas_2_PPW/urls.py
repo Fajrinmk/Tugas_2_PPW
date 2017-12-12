@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 import update_status.urls as update_status
+import halaman_riwayat.urls as halaman_riwayat
 import halaman_profile.urls as page_profile
 from django.views.generic import RedirectView
 
