@@ -62,7 +62,10 @@ response = {}
 def index(request):
     response['author'] = "Rismanti Amalia N"
     html = 'page_profile/page_profile.html'
-    response['kode_identitas'] = request.session['kode_identitas']
+    if 'kode_identitas' in request.session:
+    	response['kode_identitas'] = request.session['kode_identitas']
+    else :
+    	response['kode_identitas'] = None
     return render(request, html, response)
 
 def edit_profile(request):

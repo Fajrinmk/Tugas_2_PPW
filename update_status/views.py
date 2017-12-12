@@ -23,6 +23,8 @@ def index(request):
 
 
 def dashboard(request):
+	print(request.session['kode_identitas'])
+	print(request.session['user_login'])
 	if 'user_login' not in request.session:
 		response['author'] = get_data_user(request, "user_login")
 		html = 'update_status/login.html'
@@ -98,3 +100,6 @@ def set_data_for_session(request):
     response['author'] = get_data_user(request, 'user_login')
     response['kode_identitas'] = request.session['kode_identitas']
     response['role'] = request.session['role']
+
+# def add_data_to_session(request, id):
+	
