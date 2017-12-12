@@ -53,6 +53,8 @@ class edit_profile_form(forms.Form):
     }
 
     nama = forms.CharField(label='', required=True, max_length=27, widget=forms.TextInput(attrs=nama_attrs))
+
+    npm = forms.CharField(label='', required=True, max_length=27, widget=forms.TextInput(attrs=npm_attrs))
     birthdate = forms.CharField(label='', required=True, max_length=27, widget=forms.TextInput(attrs=birthdate_attrs))
     gender = forms.CharField(label='', required=True, max_length=27, widget=forms.TextInput(attrs=gender_attrs))
     email = forms.CharField(label='', required=True, max_length=27, widget=forms.TextInput(attrs=email_attrs))

@@ -33,17 +33,18 @@ def handle_edit_profile(request):
     # if(request.method == 'POST'and form.is_valid()):
     DataProfile.objects.all().delete()
     response['name'] = request.POST['profile_name']
+    response['npm'] = request.POST['npm']
     response['birthday'] = request.POST['birthdate']
     response['gender'] = request.POST['gender']
     response['expertise'] = request.POST['expert']
     response['email'] = request.POST['email']
     response['description'] = request.POST['desc_profile']
-    edit = DataProfile(name= response['name'], birthday = response['birthday'], gender = response['gender'],expertise = response['expertise'], email = response['email'], description = response['description'] )
+    edit = DataProfile(name= response['name'], npm = response['npm'],birthday = response['birthday'], gender = response['gender'],expertise = response['expertise'], email = response['email'], description = response['description'] )
     edit.save()
     return HttpResponseRedirect('/halaman_profile/')
 
 def show_form_edit_profile(request):
-     html = "halaman_profile/edit_profile.html"
+     html = "page_profile/edit_profile.html"
      profile = DataProfile.objects.first()
      response['profile'] = profile
      return render(request, html, response)
@@ -85,7 +86,7 @@ def show_form_edit_profile(request):
     # else:
 def index(request):
     response['author'] = "abscehfhwig"
-    html = 'page_profile/page_profile.html'
+    html = 'halaman_profile.html'
     if 'kode_identitas' in request.session:
     	response['kode_identitas'] = request.session['kode_identitas']
     else :
@@ -93,7 +94,7 @@ def index(request):
     return render(request, html, response)
 
 def edit_profile(request):
-    html = 'page_profile/edit_profile.html'
+    html = 'edit_profile.html'
     response['kode_identitas'] = request.session['kode_identitas']
     return render(request, html, response)
 
