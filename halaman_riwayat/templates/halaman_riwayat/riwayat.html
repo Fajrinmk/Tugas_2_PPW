@@ -1,4 +1,4 @@
-<section>
+
 <style>
     div.scroll {
         width: 1100px;
@@ -26,9 +26,9 @@
         background-color: black;
         color : white;
     }
-    
-
 </style>
+
+<section>
 <div class=scroll>
 <table>
     <thead>
@@ -41,17 +41,14 @@
     <tbody>   
     <tr>
         <td>{{ riwayat.kelas.nm_mk_cl.nm_mk }}</td>
-        {%if rahasia %}
+        <!-- {%if rahasia %}
         <td>Dirahasiakan</td>
-        {% else %}
+        {% else %} -->
         <td>{{ riwayat.nilai }}</td>
-        {% endif %}
+        <!-- {% endif %} -->
     </tr>
     </tbody>
     {% endfor %}
-
-        <!-- <td id="matkul"> </td> 
-        <td id="nilai" ></td> -->
     
 </table>
 </div>
