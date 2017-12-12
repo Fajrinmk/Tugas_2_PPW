@@ -38,7 +38,7 @@ def dashboard(request):
 		response['Status_form'] = Status_Form
 		kode_identitas = get_data_user(request,'kode_identitas')
 		pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
-		response['status'] = pengguna.status_set.all().order_by('created_date')
+		response['status'] = pengguna.status_set.all()
 		# print(response['status'])
 		stat = Status.objects.all().order_by('-id')
 		if (len(stat) > 0):
