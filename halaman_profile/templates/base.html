@@ -1,0 +1,78 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- bootstrap csss -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>
+        {% block title %}CSUI - JobSeeker{% endblock %}
+    </title>
+
+    <script type="text/javascript" src="//platform.linkedin.com/in.js">
+        api_key: 819tsiaks22xw1
+        authorize: true
+        onLoad: onLinkedInLoad
+    </script>
+
+    <style type="text/css">
+        .navbar-login
+        {
+            width: 305px;
+            padding: 10px;
+            padding-bottom: 0px;
+        }
+
+        .navbar-login-session
+        {
+            padding: 10px;
+            padding-bottom: 0px;
+            padding-top: 0px;
+        }
+
+        .icon-size
+        {
+            font-size: 87px;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+   {% include "login/partials/header.html" %}
+</header>
+<content style="margin-top: 80px">
+        {% for message in messages %}
+        
+        <div class="alert {{ message.tags }} alert-warning" role="alert" id="django-messages" style="margin-top: 100px">
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-right: 15px;">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% block content %}
+        <!-- Your Content Here -->
+        {% endblock %}
+    </div>
+</content>
+<footer>
+    <hr>
+    <div class="text-center">
+    <p>&copy; Copyright 2017</p>
+    </div>
+    
+</footer>
+
+<!-- Jquery n Bootstrap Script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+</body>
+</html>
