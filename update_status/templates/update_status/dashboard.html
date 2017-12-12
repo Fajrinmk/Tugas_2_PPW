@@ -17,24 +17,24 @@
     font-family: 'Spectral SC', serif;
 }
 .part2-info_user .glyphicon-user{
-	font-size: 150px;
+  font-size: 150px;
     color: red
 }
 .buttonPertama{
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .myData{
-	
-	padding: 10px;
+  
+  padding: 10px;
 }
 .part2 a{
-	margin-bottom: 30px;
-	margin-left: 30px;
+  margin-bottom: 30px;
+  margin-left: 30px;
 }
 .part2_info_user{
-	background-color: #C8D8DE;
-	padding: 10px;
-	border-radius: 10px;
+  background-color: #C8D8DE;
+  padding: 10px;
+  border-radius: 10px;
 }
 .media-left .glyphicon-user{
 font-size: 50px;
@@ -57,23 +57,23 @@ margin-bottom: 20px;
 }
 </style>
 <div class="container page1">
-	<div class="col-md-8 font1"><h1>Selamat datang {{ author }}</h1></div>
-	
-	<div class="col-md-4">
-		<a href="{% url 'update-status:auth_logout' %}" class="btn btn-danger btn-lg" onclick="return confirm('Keluar?')">Logout </a>
-	</div>
+  <div class="col-md-8 font1"><h1>Selamat datang {{ author }}</h1></div>
+  
+  <div class="col-md-4">
+    <a href="{% url 'update-status:auth_logout' %}" class="btn btn-danger btn-lg" onclick="return confirm('Keluar?')">Logout </a>
+  </div>
 </div>
 <div class="container part2">
-	<div class="col-md-4 part2_info_user">
-		<span class="glyphicon glyphicon-user pull-left" style="font-size:150px;"></span>
-		<a href="#" class="btn btn-lg btn-info ">Lihat Forum</a>
-		<a href="#" class="btn btn-lg btn-default">Update Status</a>
-	</div>
-	<div class="col-md-4">
-		<h2 class="font1">Jumlah Status : {{jumlah_status}}</h2>
-		<h2 class="font1">Last Comment : {{ latestMessage }}</h2>
-	</div>
-	<div class="col-md-4"></div>
+  <div class="col-md-4 part2_info_user">
+    <span class="glyphicon glyphicon-user pull-left" style="font-size:150px;"></span>
+    <a href="#" class="btn btn-lg btn-info ">Lihat Forum</a>
+    <a href="#" class="btn btn-lg btn-default">Update Status</a>
+  </div>
+  <div class="col-md-4">
+    <h2 class="font1">Jumlah Status : {{jumlah_status}}</h2>
+    <h2 class="font1">Last Comment : {{ latestMessage }}</h2>
+  </div>
+  <div class="col-md-4"></div>
 </div>
 
 <div class="container part3">
