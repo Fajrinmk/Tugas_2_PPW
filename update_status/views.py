@@ -18,7 +18,8 @@ def index(request):
 	if 'user_login' in request.session:
 		return HttpResponseRedirect(reverse('update-status:dashboard'))
 	else:
-
+		html = 'update_status/login.html'
+		return render(request, html, response)
 		response['author'] = get_data_user(request, 'user_login')
 		users = User.objects.all()
 		response['users'] = users
