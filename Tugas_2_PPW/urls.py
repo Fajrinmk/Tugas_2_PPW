@@ -24,10 +24,10 @@ urlpatterns = [
     url(r'^update_status/', include(update_status,namespace='update-status')),
 
     url(r'^page_profile/', include(page_profile,namespace='page-profile')),
-    url(r'^$', RedirectView.as_view(url='page_profile/',permanent=True),name='$'),
+    # url(r'^$', RedirectView.as_view(url='page_profile/',permanent=True),name='$'),
 
     url(r'^halaman_riwayat/', include(update_status,namespace='halaman-riwayat')),
-    url(r'^halaman_profile/', include(update_status,namespace='halaman-profile')),
+
     url(r'^$', RedirectView.as_view(url='update_status/',permanent=True),name='$'),
 
 ]
