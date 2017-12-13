@@ -94,10 +94,6 @@ def create_new_user(request):
 
     return pengguna
 
-### SESSION : GET and SET
-# def get_data_session(request):
-#     if get_data_user(request, 'user_login'):
-#         response['author'] = get_data_user(request, 'user_login')
 
 def set_data_for_session(request):
     response['author'] = get_data_user(request, 'user_login')
