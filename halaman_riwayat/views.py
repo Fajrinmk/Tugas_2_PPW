@@ -9,10 +9,13 @@ RIWAYAT_API = 'https://private-e52a5-ppw2017.apiary-mock.com/riwayat'
 
 def index(request):
 	response['daftar_riwayat'] = get_daftar_riwayat()
+	response['test'] = requests.get(RIWAYAT_API)
+	print(response['daftar_riwayat'])
 	# response['rahasia'] =
 	html = 'halaman_riwayat/riwayat.html'
 	return render(request, html, response)
 
 def get_daftar_riwayat():
 	daftar_riwayat = requests.get(RIWAYAT_API)
+	print(daftar_riwayat.json())
 	return daftar_riwayat.json()

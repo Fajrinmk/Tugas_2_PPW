@@ -49,14 +49,9 @@ def dashboard(request):
 		else:
 			newMessage = "You have not posted yet" 
 			time = date(datetime.now().year,datetime.now().month,datetime.now().day)
-		# response['latestMessage'] = newMessage
-		# response['jumlah_status'] = pengguna.status_set.count()
-		# response['daftar_riwayat'] = views.get_daftar_riwayat()
-		# response['firstName'] = request.session['firstName']
-		# response['lastName'] = request.session['lastName']
-		# response['imageUrl'] = request.session['imageUrl']
-		# response['email'] = request.session['email']
-		# response['profileUrl'] = request.session['profileUrl']
+		# response['headline'] = response.session['link']
+		response['jumlah_status'] = pengguna.status_set.count()
+		response['latestMessage'] = newMessage
 		html = 'update_status/dashboard.html'
 		return render(request, html, response)
 

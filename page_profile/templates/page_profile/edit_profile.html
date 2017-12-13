@@ -27,6 +27,7 @@
     function displayProfileData(data){
         console.log(data.values[0]);
         var obj = JSON.stringify(data.values[0])
+        console.log(obj)
         sessionStorage.setItem("data", obj);
 
         $('.profile-picture').html(
@@ -37,8 +38,9 @@
         document.getElementById("name").innerHTML = user.firstName+' '+user.lastName;
         document.getElementById("email").innerHTML = user.emailAddress;
         document.getElementById("link").innerHTML = user.publicProfileUrl;
-
+        sessionStorage.setItem("link", JSON.stringify(user.publicProfileUrl));
     }
+    
     // Handle an error response from the API call
     function onError(error) {
         console.log(error);
