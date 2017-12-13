@@ -39,6 +39,7 @@ def dashboard(request):
 		kode_identitas = get_data_user(request,'kode_identitas')
 		pengguna = Pengguna.objects.get(kode_identitas = kode_identitas)
 		response['status'] = pengguna.status_set.all().order_by('-id')
+		response['daftar_riwayat'] = views.get_daftar_riwayat()
 		# print(response['status'])
 		# stat = Status.objects.all().order_by('-id')
 		stat = pengguna.status_set.all().order_by('-id')

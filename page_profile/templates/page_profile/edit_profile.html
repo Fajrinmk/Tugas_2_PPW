@@ -7,6 +7,75 @@
     onLoad: onLinkedInLoad
 
 </script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    // Setup an event listener to make an API call once auth is complete
+    function onLinkedInLoad() {
+        IN.Event.on(IN, "auth", getProfileData);
+    }
+
+    function displayAdmin(data){
+      console.log(data)
+    }
+    // Use the API call wrapper to request the member's profile data
+    function getProfileData() {
+    IN.API.Profile("me").fields("id", "first-name", "last-name", "headline", "location", "picture-url", "public-profile-url", "email-address").result(displayProfileData).error(onError);
+    }
+    //Handle the successful return from the API call
+    function displayProfileData(data){
+        console.log(data.values[0]);
+        var obj = JSON.stringify(data.values[0])
+        sessionStorage.setItem("data", obj);
+
+        $('.profile-picture').html(
+         '<img class="cover" src="'+ data.values[0].pictureUrl + '"/>'
+        );
+
+        var user = data.values[0];
+        document.getElementById("name").innerHTML = user.firstName+' '+user.lastName;
+        document.getElementById("email").innerHTML = user.emailAddress;
+        document.getElementById("link").innerHTML = user.publicProfileUrl;
+
+    }
+    // Handle an error response from the API call
+    function onError(error) {
+        console.log(error);
+    }
+    // Destroy the session of linkedin
+    function logout(){
+        IN.User.logout(removeProfileData);
+    }
+    // Remove profile data from page
+    function removeProfileData(){
+        document.getElementById('profileData').remove();
+    }
+    function saveLinkedIn(){
+      console.log("success");
+      var data = sessionStorage.getItem("data");
+      var obj = JSON.parse(data);
+      insertDatabase(obj.firstName,obj.lastName,obj.pictureUrl,obj.emailAddress,obj.publicProfileUrl);
+    }
+
+    var insertDatabase = function(firstName,lastName,imageUrl,email,profileUrl) {
+        $.ajax({
+            method: "POST",
+            url: 'http://localhost:8000/page_profile/save_to_database/',
+            data: {
+              firstName: firstName,
+              lastName: lastName,
+              imageUrl: imageUrl,
+              email: email,
+              profileUrl: profileUrl
+            },
+            success : function (user) {
+                console.log(user);
+            },
+            error : function (error) {
+                console.log(error);
+            }
+        });
+    };
+</script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
     // Setup an event listener to make an API call once auth is complete
@@ -16,7 +85,6 @@
 
     function displayAdmin(data){
       console.log(data)
-
 
     }
     // Use the API call wrapper to request the member's profile data
@@ -63,7 +131,8 @@
     var insertDatabase = function(firstName,lastName,imageUrl,email,profileUrl) {
         $.ajax({
             method: "POST",
-            url: 'http://localhost:8000/page_profile/save_to_database/',
+            // url: 'http://localhost:8000/page_profile/save_to_database/',
+            url: 'http://ppw-tugas2.herokuapp.com/page_profile/save_to_database/',
             data: {
               firstName: firstName,
               lastName: lastName,
@@ -80,6 +149,7 @@
         });
     };
 </script>
+
 </head>
 
 <body style="background: linear-gradient(to left, #ffe6e9, #0dad88);">
